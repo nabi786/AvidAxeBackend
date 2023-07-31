@@ -6,6 +6,8 @@ const {
   check_user_and_uuid,
 } = require("../supabase/supabse_api");
 
+const modelObj = require("../model/modal");
+
 exports.createCompaing = async (req, res) => {
   try {
     if (!req.body.cust_id || !req.body.domain) {
@@ -25,14 +27,31 @@ exports.createCompaing = async (req, res) => {
       };
 
       var match = await check_user_and_uuid("campaign", tabale_data);
-      var datAry = match.data
-        console.log(datAry)
+      var datAry = match.data;
+      console.log(datAry);
       if (datAry.length < 1) {
         var result = insert_to_supabase("campaign", tabale_data);
         if (result.success == false) {
           res.status(500).json({ success: false, msg: "failed" });
         } else {
-          res.status(200).json({ success: true, msg: "data added to supabase" });
+
+
+          // adding compaign data to mongodb
+          var newCompaing = new modelObj.campaign({
+            raw : [{}],
+            processed : [{}],
+            supa_baseID: uuid
+          })
+
+        
+          newCompaing.save().then((data,err)=>{
+            console.log("data ", data)
+            console.log("err ", err)
+          }) 
+
+          res
+            .status(200)
+            .json({ success: true, msg: "data added to supabase" });
         }
       } else {
         res.status(500).json({

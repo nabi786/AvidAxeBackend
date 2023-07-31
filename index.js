@@ -1,28 +1,27 @@
-require("dotenv").config()
-const express = require("express")
-const app = express()
-const PORT= 3000
-const cors = require("cors")
+require("dotenv").config();
+require("./config/mongo_Client");
+const express = require("express");
+const app = express();
+const PORT = 3000;
+const cors = require("cors");
 
-
-
-app.use(express.json())
-app.use(express.urlencoded({extended: false}))
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
+// importing routes
+app.use("/api/", require("./routes/compaign"));
 
+app.get("/", (req, res) => {
+  res.status(200).json({ success: true, msg: "modernize backend working" });
+});
 
-// importing routes 
-app.use('/api/', require("./routes/compaign"))
-
-
-app.get("/", (req,res)=>{
-    res.status(200).json({success : true, msg : "modernize backend working"})
-})
-
+// if no page found
+app.get("*", (req, res) => {
+  res.status(404).json({ success: false, msg: "no route found" });
+});
 
 // porst is lietening on this
-app.listen(PORT, ()=>{
-    console.log(`backend is running on this port ${PORT}`)
-})
-
+app.listen(PORT, () => {
+  console.log(`backend is running on this port ${PORT}`);
+});

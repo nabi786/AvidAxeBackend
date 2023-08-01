@@ -2,7 +2,7 @@ require("dotenv").config();
 require("./config/mongo_Client");
 const express = require("express");
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT;
 const cors = require("cors");
 
 app.use(express.json());
@@ -11,6 +11,7 @@ app.use(cors());
 
 // importing routes
 app.use("/api/", require("./routes/compaign"));
+app.use("/api/", require("./routes/mongo/campaign"));
 
 app.get("/", (req, res) => {
   res.status(200).json({ success: true, msg: "modernize backend working" });

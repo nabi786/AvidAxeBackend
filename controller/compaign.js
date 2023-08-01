@@ -40,7 +40,7 @@ exports.createCompaing = async (req, res) => {
           var newCompaing = new modelObj.campaign({
             raw : [{}],
             processed : [{}],
-            supa_baseID: uuid
+            supa_uuid: uuid
           })
 
         

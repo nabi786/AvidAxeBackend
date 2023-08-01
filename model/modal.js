@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const campaignModal = new mongoose.Schema(
   {
-    supa_baseID : {
+    supa_uuid : {
         type : String,
         required : true
     },

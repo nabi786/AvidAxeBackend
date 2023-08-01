@@ -2,6 +2,6 @@ const express = require("express");
 const router = express.Router();
 const { createCompaing } = require("../controller/compaign");
 
-router.post("/compaign", createCompaing);
+router.post("/campaign", createCompaing);
 
 module.exports = router;

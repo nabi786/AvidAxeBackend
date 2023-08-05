@@ -12,6 +12,7 @@ app.use(cors());
 // importing routes
 app.use("/api/", require("./routes/compaign"));
 app.use("/api/", require("./routes/mongo/campaign"));
+app.use("/api/", require("./routes/v1/domain"))
 
 app.get("/", (req, res) => {
   res.status(200).json({ success: true, msg: "modernize backend working" });

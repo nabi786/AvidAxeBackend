@@ -20,7 +20,7 @@ const options = {
     detectSessionInUrl: true
   },
   global: {
-    headers: { 'x-my-custom-header': 'my-app-name' },
+    headers: { 'x-my-custom-header': 'AvidAxe'},
   },
 }
 const supabase = createClient(supabaseUrl, supabaseAnonKey, options)

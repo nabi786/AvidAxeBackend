@@ -13,6 +13,7 @@ app.use(cors());
 app.use("/api/", require("./routes/compaign"));
 app.use("/api/", require("./routes/mongo/campaign"));
 app.use("/api/", require("./routes/v1/domain"))
+app.use("/api/", require("./routes/mongo/projects"))
 
 app.get("/", (req, res) => {
   res.status(200).json({ success: true, msg: "modernize backend working" });

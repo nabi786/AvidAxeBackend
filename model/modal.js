@@ -33,8 +33,32 @@ const campaignModal = new mongoose.Schema(
   { timestamps: true }
 );
 
-var campaign = mongoose.model("campaign", campaignModal);
 
-var object = { campaign };
+
+
+// projects
+const ProjectSchema = new mongoose.Schema(
+  {
+    userID : {
+      type : String,
+      required : true,
+    },
+    imageTitle : {
+      type : String,
+    },
+    imageJSON : {
+      type : Object,
+    },
+    imageURL : {
+      type : String
+    }
+  },
+
+  { timestamps: true }
+);
+
+var campaign = mongoose.model("campaign", campaignModal);
+var project = mongoose.model("project", ProjectSchema);
+var object = { campaign,project};
 
 module.exports = object;

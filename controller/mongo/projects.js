@@ -23,3 +23,18 @@ exports.addProject = async(req,res)=>{
         res.status(500).json({success : false, msg : err.message});
     }
 }
+
+// get data by ID
+exports.getProjectByID = async(req,res)=>{
+    try{
+        var project = await modal.project.findOne({_id : req.body.id})
+        if(project){
+            res.status(200).json({status : true, data : project});
+        }else{
+            res.status(404).json({status : false, msg : "no data found"});
+        }
+        
+    }catch(err){
+        res.status(500).json({status : false, msg : err.message});
+    }
+}

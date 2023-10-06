@@ -8,6 +8,8 @@ const {
 // router.post("/project", projectObj.addProject);
 router.post("/project", addProject);
 
+// router.get("/project", addProject);
+
 
 // exporting module
 module.exports = router;

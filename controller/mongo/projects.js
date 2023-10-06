@@ -15,9 +15,8 @@ exports.addProject = async(req,res)=>{
                 imageJSON  :req.body.imageJSON,
                 imageURL  :req.body.imageURL
             })
-            
-            await newPorject.save()
-            res.status(200).json({success : true, msg : "project added succesfully"});
+            var data = await newPorject.save()
+            res.status(200).json({success : true, msg : "project added succesfully" ,data });
         
 
     }catch(err){

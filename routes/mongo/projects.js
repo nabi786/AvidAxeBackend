@@ -14,7 +14,7 @@ router.get("/project", getProjectByID);
 
 
 // upate project data
-router.patch("/project", updateProjct);
+// router.patch("/project", updateProjct);
 
 
 // exporting module

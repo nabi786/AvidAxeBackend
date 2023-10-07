@@ -25,7 +25,6 @@ exports.addProject = async (req, res) => {
 exports.getProjectByID = async (req, res) => {
   try {
     // console.log("query ", req.params.id)
- 
       var project = await modal.project.findOne({ _id: req.params.id });
       console.log("project data ", project);
       if (project) {
@@ -39,11 +38,19 @@ exports.getProjectByID = async (req, res) => {
   }
 };
 
+
+
+
+
 // update proejct Data
 exports.updateProjct = async (req, res) => {
   try {
     var project = await modal.project.find({ _id: req.body.id });
     if (project) {
+        await modal.project.findOneAndUpdate(
+        { _id: req.body.id },
+        { imageJSON: req.body.imageJSON }
+      );
       res.status(200).json({ status: true, data: project });
     } else {
       res.status(404).json({ status: false, msg: "no data found" });

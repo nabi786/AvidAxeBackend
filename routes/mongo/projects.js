@@ -2,7 +2,8 @@ const express = require("express")
 const router = express.Router();
 const {
     addProject,
-    getProjectByID
+    getProjectByID,
+    updateProjct
 } = require("../../controller/mongo/projects")
 
 
@@ -14,7 +15,7 @@ router.get("/project/:id", getProjectByID);
 
 
 // upate project data
-// router.patch("/project", updateProjct);
+router.patch("/project", updateProjct);
 
 
 // exporting module

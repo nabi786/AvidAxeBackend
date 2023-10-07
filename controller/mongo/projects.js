@@ -49,7 +49,7 @@ exports.updateProjct = async (req, res) => {
     if (project) {
         await modal.project.findOneAndUpdate(
         { _id: req.body.id },
-        { imageJSON: req.body.imageJSON }
+        { imageJSON: req.body.imageJSON, imageURL : req.body.imageURL}
       );
       res.status(200).json({ status: true, data: project });
     } else {

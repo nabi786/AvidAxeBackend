@@ -59,3 +59,16 @@ exports.updateProjct = async (req, res) => {
     res.status(500).json({ status: false, msg: err.message });
   }
 };
+
+
+
+// get all projects by userID
+exports.getProjectsByUserID = async (req, res) => {
+  try {
+    var project = await modal.project.find({ userID: req.params.userID });
+   
+    res.status(200).json({status : true, data : project})
+  } catch (err) {
+    res.status(500).json({ status: false, msg: err.message });
+  }
+};

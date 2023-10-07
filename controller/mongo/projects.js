@@ -47,11 +47,11 @@ exports.updateProjct = async (req, res) => {
   try {
     var project = await modal.project.find({ _id: req.body.id });
     if (project) {
-        await modal.project.findOneAndUpdate(
+        var data = await modal.project.findOneAndUpdate(
         { _id: req.body.id },
         { imageJSON: req.body.imageJSON, imageURL : req.body.imageURL}
       );
-      res.status(200).json({ status: true, data: project });
+      res.status(200).json({ status: true, data: data });
     } else {
       res.status(404).json({ status: false, msg: "no data found" });
     }

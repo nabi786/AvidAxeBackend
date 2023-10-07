@@ -10,7 +10,7 @@ const {
 router.post("/project", addProject);
 
 // get project data
-router.get("/project", getProjectByID);
+router.get("/project/:id", getProjectByID);
 
 
 // upate project data

@@ -65,6 +65,8 @@ exports.updateProjct = async (req, res) => {
 // get all projects by userID
 exports.getProjectsByUserID = async (req, res) => {
   try {
+
+    console.log("api working")
     var project = await modal.project.find({ userID: req.params.userID });
    
     res.status(200).json({status : true, data : project})
